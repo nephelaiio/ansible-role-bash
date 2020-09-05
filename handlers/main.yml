@@ -1,0 +1,7 @@
+---
+# - name: restart bash
+#   become: yes
+#   service:
+#     name: "{{ item }}"
+#     state: restarted
+#   with_items: "{{ bash_service_names }}"

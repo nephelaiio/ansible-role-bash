@@ -1,0 +1,29 @@
+---
+- name: include variable overrides
+  include_vars: "{{ item }}"
+  vars:
+    params:
+      - "vars/{{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }}.yml"
+      - "vars/{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version }}.yml"
+      - "vars/{{ ansible_distribution | lower }}.yml"
+      - "vars/{{ ansible_os_family | lower }}.yml"
+      - "vars/default.yml"
+  loop: "{{ q('first_found', params, skip=True) }}"
+  tags:
+    - always
+
+- name: add personal bash profile loader
+  template:
+    dest: "{{ bash_profile_path }}/user_profile.sh"
+    src: profiled.j2.sh
+  tags:
+    - install
+
+- name: create personal bash profile dir
+  file:
+    state: directory
+    dest: "{{ bash_profile_home }}/{{ bash_profile_user_path }}"
+    owner: "{{ bash_profile_user }}"
+    group: "{{ bash_profile_group }}"
+  tags:
+    - configure

@@ -1,0 +1,24 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint: |
+  yamllint .
+  ansible-lint .
+platforms:
+  - name: focal
+    image: ubuntu:focal
+  - name: stretch
+    image: debian:stretch
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      all:
+        bash_profile_user: root
+        bash_profile_home: /root
+        bash_profile_group: root
+        bash_profile_user_path: .profile.d
+verifier:
+  name: testinfra

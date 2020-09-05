@@ -1,0 +1,6 @@
+---
+bash_profile_path: /etc/profile.d
+bash_profile_user: "{{ lookup('env', 'USER') }}"
+bash_profile_group: "{{ lookup('env', 'USER') }}"
+bash_profile_home: "{{ lookup('env', 'HOME') }}"
+bash_profile_user_path: .profile.d
