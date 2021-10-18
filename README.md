@@ -1,9 +1,9 @@
 # nephelaiio.bash
 
-[![Build Status](https://travis-ci.org/nephelaiio/ansible-role-bash.svg?branch=master)](https://travis-ci.org/nephelaiio/ansible-role-bash)
-[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-nephelaiio.bash-blue.svg)](https://galaxy.ansible.com/nephelaiio/bash/)
+[![Build Status](https://github.com/nephelaiio/ansible-role-bash/workflows/CI/badge.svg)](https://github.com/nephelaiio/ansible-role-bash/actions)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-nephelaiio.bash//galaxy.ansible.com/nephelaiio/bash/)
 
-An [ansible role](https://galaxy.ansible.com/nephelaiio/bash) to install and configure bash
+An [ansible role](https://galaxy.ansible.com/nephelaiio/bash) to configure bash with personal settings
 
 ## Local install
 
