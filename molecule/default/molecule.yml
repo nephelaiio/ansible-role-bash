@@ -3,24 +3,24 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint: |
-  yamllint .
-  ansible-lint .
 platforms:
-  - name: focal
-    image: ubuntu:focal
-  - name: bionic
-    image: ubuntu:bionic
-  - name: stretch
-    image: debian:stretch
+  - name: instance
+    image: "${MOLECULE_DOCKER_IMAGE:-geerlingguy/docker-ubuntu2004-ansible:latest}"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
 provisioner:
   name: ansible
+  log: true
+  playbooks:
+    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   inventory:
     group_vars:
       all:
-        bash_profile_user: root
-        bash_profile_home: /root
-        bash_profile_group: root
-        bash_profile_user_path: .profile.d
+        git_lfs: 'yes'
+        git_configure: 'yes'
+scenario:
+  name: default
 verifier:
   name: testinfra

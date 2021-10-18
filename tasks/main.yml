@@ -12,18 +12,16 @@
   tags:
     - always
 
-- name: add personal bash profile loader
+- name: add personal shell profile loader
   template:
     dest: "{{ bash_profile_path }}/user_profile.sh"
     src: profiled.j2.sh
   tags:
     - install
 
-- name: create personal bash profile dir
+- name: create personal shell profile dir
   file:
     state: directory
-    dest: "{{ bash_profile_home }}/{{ bash_profile_user_path }}"
-    owner: "{{ bash_profile_user }}"
-    group: "{{ bash_profile_group }}"
+    dest: "~/{{ bash_profile_user_path }}"
   tags:
     - configure

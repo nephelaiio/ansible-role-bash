@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: bash
+  namespace: nephelaiio
   author: Ted Cook
   description: Ansible role to configure personal bash profile
   license: MIT
@@ -8,16 +9,18 @@ galaxy_info:
   platforms:
     - name: EL
       versions:
-        - 7
+        - all
     - name: Archlinux
       versions:
         - all
     - name: Ubuntu
       versions:
-        - xenial
+        - all
     - name: Debian
       versions:
-        - stretch
-  galaxy_tags: ['bash']
+        - all
+
+  galaxy_tags:
+    - 'bash'
 
 dependencies: []

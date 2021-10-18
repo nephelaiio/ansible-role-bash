@@ -43,8 +43,8 @@ done
 
 # verify requirements
 requirements=(ansible-playbook git)
-for r in ${requirements[@]}; do
-    if ! r_path=$(type -p $r); then
+for r in "${requirements[@]}"; do
+    if ! type -p "$r"; then
         echo "$r executable not found in path, aborting"
         exit $KO
     fi
@@ -59,13 +59,13 @@ if [ -z "${LOCAL}" ]; then
 else
     cp -a . $tmpdir
 fi
-pushd $tmpdir/install
+cd "$tmpdir/install" || exit
 if [ -f ../requirements.yml ]; then
     ansible-galaxy install -r ../requirements.yml --force
 fi
 ansible-playbook --become --connection=local -i inventory playbook.yml -t install
-ansible-playbook --connection=local -i inventory playbook.yml ${POSITIONAL[@]}
-popd
+ansible-playbook --connection=local -i inventory playbook.yml "${POSITIONAL[@]}"
+cd - || exit
 
 # purge temp files
 rm -rf $tmpdir
