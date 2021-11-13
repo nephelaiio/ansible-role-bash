@@ -63,7 +63,7 @@ cd "$tmpdir/install" || exit
 if [ -f ../requirements.yml ]; then
     ansible-galaxy install -r ../requirements.yml --force
 fi
-ansible-galaxy role install nephelaiio.emacs --force
+ansible-galaxy role install nephelaiio.bash --force
 ansible-playbook --become --connection=local -i inventory playbook.yml -t install
 ansible-playbook --connection=local -i inventory playbook.yml "${POSITIONAL[@]}"
 cd - || exit
